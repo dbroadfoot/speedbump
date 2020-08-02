@@ -18,7 +18,7 @@
             var check_exclusions = settings.speedbump_exclusions.split(',');
             for (i = 0; i < check_exclusions.length; i++) {
                 checkme = check_exclusions[i];
-                if (checkme != "" && (checkme.indexOf('*') !== -1) {
+                if (checkme != "" && checkme.indexOf('*') !== -1) {
                     if (checkme.indexOf('.*') === -1) {
                         checkme = checkme.replace('*', '.*');
                     }
