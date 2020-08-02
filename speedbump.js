@@ -9,7 +9,7 @@
 
         $.expr[":"].external = function(a) {
             var linkhn = a.hostname.split('.').reverse();
-            if (!linkhn.length > 1) return false;
+            if (!(linkhn.length > 1)) return false;
             var linkHref = linkhn[1] + "." + linkhn[0];
 
             var domainhn = window.location.hostname.split('.').reverse();
