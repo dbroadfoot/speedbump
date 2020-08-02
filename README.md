@@ -4,7 +4,10 @@ recommended css via bulma
 
 options: 
 
+speedbump_message (html)
+speedbump_exclusions: csv, can end in * for wildcard
 
+```
 
 <html>
 <head>
@@ -19,6 +22,7 @@ options:
 		
 		$( document ).ready(function() {
 		    $( 'body' ).speedbunp(
+		    	{speedbump_message: '<p>This is a test!</p>', speedbump_exclusions: 'http://www.google*,/test'}
 		    );
 		});
 		
@@ -32,3 +36,5 @@ options:
 	
 </body>
 </html>
+
+```
