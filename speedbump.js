@@ -1,56 +1,57 @@
-(function ( $ ) {
+(function($) {
 
-  $.fn.speedbunp = function( options ) {
+    $.fn.speedbunp = function(options) {
 
-	var settings = $.extend({
-		speedbump_exclusions: '',
-		speedbump_message: '<p>By accessing this link you will be leaving our website.</p>'
-	}, options );
-	
-    $.expr[":"].external = function(a) {
-        var linkhn = a.hostname.split('.').reverse();
-        var linkHref = linkhn[1] + "." + linkhn[0];
+        var settings = $.extend({
+            speedbump_exclusions: '',
+            speedbump_message: '<p>By accessing this link you will be leaving our website.</p>'
+        }, options);
 
-        var domainhn = window.location.hostname.split('.').reverse();
-        var domainHref = domainhn[0] == "" ? "" : domainhn[1] + "." + domainhn[0];
+        $.expr[":"].external = function(a) {
+            var linkhn = a.hostname.split('.').reverse();
+            if (!linkhn.length > 1) return false;
+            var linkHref = linkhn[1] + "." + linkhn[0];
 
-		var check_exclusions = settings.speedbump_exclusions.split(',');
-		for (i = 0; i < check_exclusions.length; i++) {
-			checkme = check_exclusions[i];
-			if (checkme != "" && checkme.indexOf('*')) {
-				if (checkme.indexOf('.*') === false) {
-					checkme = checkme.replace('*','.*');
-				}
-				match = a.href.match(new RegExp(checkme));
-				if (match !== null && match.index === 0)  {
-					return false;
-				}
-			} else {
-				if (a.href === checkme) return false;
-			}
-		}
+            var domainhn = window.location.hostname.split('.').reverse();
+            var domainHref = domainhn[0] == "" ? "" : domainhn[1] + "." + domainhn[0];
 
-        return !a.href.match(/^mailto\:/) && !a.href.match(/^tel\:/) && !a.href.match(/^javascript\:/) &&linkHref !== domainHref;
-    };
-	
-	$("a:external:not(.no_warning)").addClass("ext_link");
-	
-    $('a.ext_link').click(function(e) {
-        // open a modal
-        $('#speedbump').addClass('is-active');
-        e.preventDefault(); 
-        //go to link on modal close
-        var url = $(this).attr('href');
-        $('#speedbump .btn-modal.btn-continue').click(function() {
-            $('#speedbump').removeClass('is-active');
-            window.open(url);
+            var check_exclusions = settings.speedbump_exclusions.split(',');
+            for (i = 0; i < check_exclusions.length; i++) {
+                checkme = check_exclusions[i];
+                if (checkme != "" && checkme.indexOf('*')) {
+                    if (checkme.indexOf('.*') === false) {
+                        checkme = checkme.replace('*', '.*');
+                    }
+                    match = a.href.match(new RegExp(checkme));
+                    if (match !== null && match.index === 0) {
+                        return false;
+                    }
+                } else {
+                    if (a.href === checkme) return false;
+                }
+            }
+
+            return !a.href.match(/^mailto\:/) && !a.href.match(/^tel\:/) && !a.href.match(/^javascript\:/) && linkHref !== domainHref;
+        };
+
+        $("a:external:not(.no_warning)").addClass("ext_link");
+
+        $('a.ext_link').click(function(e) {
+            // open a modal
+            $('#speedbump').addClass('is-active');
+            e.preventDefault();
+            //go to link on modal close
+            var url = $(this).attr('href');
+            $('#speedbump .btn-modal.btn-continue').click(function() {
+                $('#speedbump').removeClass('is-active');
+                window.open(url);
+            });
+            $('#speedbump .btn-modal.btn-close, #speedbump .modal-close').click(function() {
+                $('#speedbump').removeClass('is-active');
+            });
         });
-        $('#speedbump .btn-modal.btn-close, #speedbump .modal-close').click(function() {
-            $('#speedbump').removeClass('is-active');
-        });
-    });
-	  
-	var html = `<div class="modal fade" id="speedbump" role="dialog">
+
+        var html = `<div class="modal fade" id="speedbump" role="dialog">
 		<div class="modal-background"></div>
         <div class="modal-dialog">
             <!-- Modal content-->
@@ -72,8 +73,8 @@
         </div>
 	</div>`;
 
-	return $(html).appendTo(this);
+        return $(html).appendTo(this);
 
-  };
+    };
 
-}( jQuery ));
+}(jQuery));
