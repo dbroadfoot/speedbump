@@ -4,8 +4,9 @@ recommended css via bulma
 
 options: 
 
-speedbump_message (html)
-speedbump_exclusions: csv, can end in * for wildcard
+speedbump_message - html
+
+speedbump_exclusions - csv, can end in * for wildcard
 
 ```
 
