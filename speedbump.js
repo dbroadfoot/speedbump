@@ -53,7 +53,6 @@
 
         var html = `<div class="modal fade" id="speedbump" role="dialog">
 		<div class="modal-background"></div>
-        <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
 				<div class="box">
@@ -70,7 +69,6 @@
 				</div>
             </div>
 			<button class="modal-close is-large" aria-label="close"></button>
-        </div>
 	</div>`;
 
         return $(html).appendTo(this);
