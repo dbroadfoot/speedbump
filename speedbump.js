@@ -1,6 +1,6 @@
 (function($) {
 
-    $.fn.speedbunp = function(options) {
+    $.fn.speedbump = function(options) {
 
         var settings = $.extend({
             speedbump_exclusions: '',
