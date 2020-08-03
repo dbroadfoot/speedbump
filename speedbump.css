@@ -2,7 +2,7 @@
     display: flex;
 }
 
-#speedbump.modal, #speedbump.modal-background {
+#speedbump.modal, #speedbump .modal-background {
     bottom: 0;
     left: 0;
     position: absolute;
