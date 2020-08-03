@@ -17,16 +17,16 @@ speedbump_exclusions - csv, can end in * for wildcard
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	  
-	<script type="text/javascript" src='https://cdn.jsdelivr.net/gh/dbroadfoot/speedbump@master/speedbump.js'></script>
+	<script type="text/javascript" src='https://gitcdn.xyz/repo/dbroadfoot/speedbump/master/speedbump.min.js'></script>
 
 	<script>
-		
-		$( document ).ready(function() {
-		    $( 'body' ).speedbunp(
-		    	{speedbump_message: '<p>This is a test!</p>', speedbump_exclusions: 'http://www.google*,/test'}
-		    );
-		});
-		
+
+	  $( document ).ready(function() {
+	    $( 'body' ).speedbump(
+	      {speedbump_message: '<p>This is a test!</p>', speedbump_exclusions: 'http://www.google*,/test'}
+	    );
+	  });
+
 	</script>
 	
 </head>
