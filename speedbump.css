@@ -2,7 +2,7 @@
     display: flex;
 }
 
-#speedbump.modal, #speedbump .modal-background {
+#speedbump.modal, #speedbump.modal-background {
     bottom: 0;
     left: 0;
     position: absolute;
@@ -60,11 +60,9 @@
 
 #speedbump .modal-close {
     background: 0 0;
-    height: 40px;
     position: fixed;
     right: 20px;
     top: 20px;
-    width: 40px;
 }
 
 #speedbump .modal-close {
@@ -85,7 +83,6 @@
     min-height: 20px;
     min-width: 20px;
     outline: 0;
-    position: relative;
     vertical-align: top;
     width: 20px;
 }
