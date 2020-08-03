@@ -20,7 +20,7 @@
     z-index: 40;
 }
 
-#speedbump.modal-background {
+#speedbump .modal-background {
     background-color: rgba(10,10,10,.86);
 }
 
