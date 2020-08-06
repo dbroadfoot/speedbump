@@ -4,7 +4,8 @@
 
         var settings = $.extend({
             speedbump_exclusions: '',
-            speedbump_message: '<p>By accessing this link you will be leaving our website.</p>'
+			speedbump_selector: '.speedbump',
+			speedbump_close_selectors: 'speedbump-close-button, .button.close'
         }, options);
 
         $.expr[":"].external = function(a) {
@@ -35,43 +36,24 @@
         };
 
         $("a:external:not(.no_warning)").addClass("ext_link");
+		
+		$(settings.speedbump_close_selectors).click(function(){
+			$(settings.speedbump_selector).removeClass('is-active');
+		});
 
         $('a.ext_link').click(function(e) {
             // open a modal
-            $('#speedbump').addClass('is-active');
+            $(settings.speedbump_selector).addClass('is-active');
             e.preventDefault();
             //go to link on modal close
             var url = $(this).attr('href');
-            $('#speedbump .btn-modal.btn-continue').click(function() {
-                $('#speedbump').removeClass('is-active');
+            $(settings.speedbump_selector + ' a.button').click(function() {
+                $(settings.speedbump).removeClass('is-active');
                 window.open(url);
-            });
-            $('#speedbump .btn-modal.btn-close, #speedbump .modal-close').click(function() {
-                $('#speedbump').removeClass('is-active');
             });
         });
 
-        var html = `<div class="modal fade" id="speedbump" role="dialog">
-		<div class="modal-background"></div>
-            <!-- Modal content-->
-            <div class="modal-content">
-				<div class="box">
-	                <div class="modal-header">
-	                <h4 class="modal-title">Notice</h4>
-	                </div>
-	                <div class="modal-body">
-					` + settings.speedbump_message + `
-	                </div>
-	                <div class="modal-footer text-center">
-	                <button type="button" title="continue" class="btn btn-modal btn-continue">Continue</button>
-	                <button type="button" title="go back" class="btn btn-modal btn-close">Go Back</button>
-	                </div>
-				</div>
-            </div>
-			<button class="modal-close is-large" aria-label="close"></button>
-	</div>`;
-
-        return $(html).appendTo(this);
+        return true;
 
     };
 
