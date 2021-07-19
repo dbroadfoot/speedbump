@@ -49,8 +49,8 @@
             var url = $(this).attr('href');
 	    $(settings.speedbump_selector + ' a.button').unbind('click');
             $(settings.speedbump_selector + ' a.button').click(function() {
-                $(settings.speedbump).removeClass('is-active');
-                window.open(url);
+                $(settings.speedbump_selector).removeClass('is-active');
+                if(e(this).hasClass('close') == false) window.open(url);
             });
         });
 
