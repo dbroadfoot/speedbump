@@ -51,7 +51,7 @@
             $(settings.speedbump_selector + ' a.button').click(function() {
                 $(settings.speedbump_selector).removeClass('is-active');
 		$("html, body").removeAttr("style");
-                if(e(this).hasClass('close') == false) window.open(url);
+                if($(this).hasClass('close') == false) window.open(url);
             });
         });
 
